@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>todo list</title>
+</head>
+<style>
+  input[type=text] {
+    height: 42px;
+    width: 35%;
+    font-size: 20px;
+
+
+  }
+
+  input[type=submit] {
+    height: 46px;
+    width: 150px;
+    font-size: 22px;
+    background-color: lightblue;
+    border: none;
+  }
+
+  button {
+    height: 40px;
+    width: 60px;
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  h1 {
+    margin-top: 0;
+    margin-left: 20%;
+
+  }
+
+  .box {
+    line-height: 50px;
+    height: 300px;
+    width: 50%;
+    background-color: antiquewhite;
+  }
+
+  #top {
+    margin-left: 30%;
+  }
+
+  .abx {
+    text-decoration: line-through;
+  }
+</style>
+
+<body>
+
+  <div id="top">
+    <h1><u>Todo list</u></h1>
+    <div id="add">
+      <input type="text">
+      <input type="submit" value="ADD" id="addButton">
+      <div class="box">
+        <div id="show"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+
+    document.querySelector('#addButton').onclick = function () {
+      if (document.querySelector('#add input').value.length == 0) {
+        alert("Kindly Enter Task Name!!!!")
+      }
+
+      else {
+        document.querySelector('#show').innerHTML += `
+            <div class="task">
+                <span id="taskname">
+                    ${document.querySelector('#add input').value}
+                </span>
+                <button class="delete">
+                    delete
+                </button>
+                <button class="strike">
+                    strike
+                </button>
+            </div>
+        `;
+
+        var current_tasks = document.querySelectorAll(".delete");
+        for (var i = 0; i < current_tasks.length; i++) {
+          current_tasks[i].onclick = function () {
+            this.parentNode.remove();
+          }
+        }
+      }
+      show.addEventListener('click', function (f) {
+        if (f.target.classList.contains('strike')) {
+          f.target.parentElement.classList.toggle('abx')
+        }
+      })
+    }
+
+  </script>
+</body>
+
+</html>
